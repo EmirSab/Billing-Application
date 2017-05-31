@@ -1,0 +1,45 @@
+<div class="row agents-header">
+              <div ng-model="requestModel.Id">{{request.Id=credentials.currentUser.id}}</div>
+               <div class="col-md-4" style="font-size: 16px;">
+                <p class="input-group">
+                    <input type="text" placeholder="Sales StartDate" class="form-control" ng-model-options="{timezone: 'utc'}" value="request.startDate" ng-model="request.startDate" uib-datepicker-popup is-open="popup2.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close">
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="open2()"><span class="glyphicon glyphicon-calendar"></span></button>
+                    </span>
+                </p>
+</div>
+<div class="col-md-4" style="font-size: 16px;">
+                <p class="input-group">
+                    <input type="text" placeholder="Sales EndDate" class="form-control" ng-model-options="{timezone: 'utc'}" ng-model="request.endDate" uib-datepicker-popup is-open="popup3.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close">
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="open3()"><span class="glyphicon glyphicon-calendar"></span></button>
+                    </span>
+                </p>
+</div>
+<div class="col-md-4" style="font-size: 16px;">
+<input type="button" class="btn btn-default" value="Submit" ng-click="save()"/>
+    </div>
+</div>
+<table class="table table-hover">
+    <thead><th class="btn btn-default col-md-2 glyphicon glyphicon-fast-backward" ng-click="goto(catScope-1,pageNo)"></th><th>Categories ({{catScope}})</th><th class="btn btn-default col-md-2 glyphicon glyphicon-fast-forward" ng-click="goto(catScope+1,pageNo)"></th></thead>
+   <thead>
+       <th>Customer</th>
+        <th>Turnover</th>
+       <th ng-repeat="categories in CustomersByCategory.categories">{{categories.name}}</th>
+   </thead>
+    <tr ng-repeat="items in CustomersByCategory.customers">
+        <td><b>{{items.name}}</b></td>
+        <td>{{items.turnover | number: 2}}</td>
+        <td ng-repeat="item in CustomersByCategory.categories track by $index">{{items.Sales | number: 2}}</td>
+    </tr>
+    <tr><td><b>Total</b></td> <td><i>{{CustomersByCategory.Total | number: 2}}</i></td>
+        <td ng-repeat="itemCat in CustomersByCategory.categories track by $index"><i>{{itemCat.total | number: 2}}</i></td>
+    </tr>
+</table>
+<div class="col-md-1"/>
+<div class="btn btn-default col-md-2 glyphicon glyphicon-fast-backward" ng-click="goto(catScope,pageNo-10)"/> 
+<div class="btn btn-default col-md-2 glyphicon glyphicon-step-backward" ng-click="goto(catScope,pageNo-1)"/>
+<div class="col-md-2"><input placeholder=1 value=currentPage ng-model="pageNo" class="form-control" ng-keyup="$event.keyCode == 13 && goto(catScope,pageNo)" /></div>
+<div class="btn btn-default align-right col-md-2 glyphicon glyphicon-step-forward" ng-click="goto(catScope,pageNo+1)"/> 
+<div class="btn btn-default align-right col-md-2 glyphicon glyphicon-fast-forward" ng-click="goto(catScope,pageNo+10)"/>
+<div class="col-md-1"/> 

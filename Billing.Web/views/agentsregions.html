@@ -1,0 +1,51 @@
+<div class="row agents-header">
+              <div ng-model="requestModel.Id">{{request.Id=credentials.currentUser.id}}</div>
+               <div class="col-md-4" style="font-size: 16px;">
+                <p class="input-group">
+                    <input type="text" placeholder="Sales StartDate" class="form-control" ng-model-options="{timezone: 'utc'}" ng-model="request.startDate" uib-datepicker-popup is-open="popup2.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close"/>
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="open2()"><span class="glyphicon glyphicon-calendar"></span></button>
+                    </span>
+                </p>
+</div>
+<div class="col-md-4" style="font-size: 16px;">
+                <p class="input-group">
+                    <input type="text" placeholder="Sales EndDate" class="form-control" ng-model-options="{timezone: 'utc'}" ng-model="request.endDate" uib-datepicker-popup is-open="popup3.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close"/>
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="open3()"><span class="glyphicon glyphicon-calendar"></span></button>
+                    </span>
+                </p>
+</div>
+<div class="col-md-4" style="font-size: 16px;">
+<input type="button" class="btn btn-default" value="Submit" ng-click="save()"/>
+    </div>
+</div>
+<table class="table table-hover">
+   <thead>
+       <th>Agent Name</th>
+        <th>Turnover</th>
+       <th ng-repeat="region in regionlist">{{region}}</th>
+   </thead>
+    <tr ng-repeat="items in CrossAgentRegion.agents">
+        <td><a href="" ng-click="showAgent(items)">{{items.name}}</a><td>
+        <!--<td><b>{{items.name}}</b></td>-->
+        <td>{{items.turnover | number: 2}}</td>
+        <td ng-repeat="item in items.sales track by $index">{{item | number: 2}}</td>
+    </tr>
+<!--
+    <tr><td><b>Total</b></td> <td><i>{{CrossAgentRegion.grandTotal | number: 2}}</i></td>
+        <td ng-repeat="itemReg in CrossAgentRegion.regions track by $index"><i>{{itemReg | number: 2}}</i></td>
+    </tr>
+-->
+</table>
+<div class="arGraph"><canvas id="salesChart"></canvas></div>
+
+
+
+
+
+
+
+
+
+

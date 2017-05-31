@@ -1,0 +1,182 @@
+
+body {
+    margin: 0;
+    padding-top: 172px;
+    padding-bottom: 32px;
+    //background: url(../images/bg.jpg) no-repeat center center fixed;
+    //background-size: cover;
+}
+
+header, footer {
+    position: fixed;
+    color: white;
+    background-color: #036;
+    width: 100%;
+    z-index: 999;
+    text-align: center;
+}
+
+header {
+    top: 0;
+}
+
+footer {
+    bottom: 0;
+    font-size: 0.8em;
+    padding: 6px;
+}
+
+header ul {
+    float: left;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+header li {
+    display: inline;
+    margin: 0 3px;
+}
+
+input, select {
+    color:black;
+    background-color: lightgray;
+    border: 1px black solid;
+    font-size: 0.9em;
+}
+
+hr {
+    border: 1px solid teal;
+}
+
+#login {
+    border:solid 1px blue;
+    background-color: darkblue;
+    color: white;
+    width: 260px;
+    margin: 6px auto;
+    padding: 12px
+}
+
+.image {
+    width: 100px;
+    height: 100px;
+}
+
+
+.title {
+    font-size: 2em;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.title-sm {
+    margin-top: -12px;
+    margin-bottom: 12px;
+    font-size: 1.5em;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.listMenu {
+    clear: both;
+    display: table;
+    width: 100%;
+    background-color: #dedede;
+    color: blue;
+    padding: 6px;
+    margin:6px;
+}
+
+.grid {
+    background-color: #fffafa;
+}
+.grid:nth-child(2n+1) {
+    background-color: #dedede;
+}
+
+.grid-i {
+    background-color: #369;
+    color: white;
+}
+.grid-i:nth-child(2n+1) {
+    background-color: #47A;
+}
+
+.deep {
+    padding-top:12px;
+}
+.smal {
+    padding: 4px 0;
+}
+
+.logAs {
+    display: table;
+    margin: 12px auto;
+}
+
+table, td {
+    border: 1px solid gray;
+    padding: 4px;
+    font-size: 0.9em;
+}
+
+#login {
+    width: 240px;
+    margin: 0 auto;
+    color: white;
+    background-color: #036;
+    box-shadow: 4px 4px 80px #000;
+}
+
+#editor {
+    margin: 0 auto;
+    color: white;
+    background-color: #357;
+    box-shadow: 4px 4px 80px #000;
+}
+
+
+#copyright {
+    margin: 0 auto;
+    padding: 4px 0;
+    font-size: 0.75em;
+}
+
+.agent {
+    float: left;
+    padding: 8px;
+    margin: 8px;
+    border: 1px solid darkblue;
+}
+
+.agentTown {
+    float: left;
+    background-color: lightblue;
+    color: black;
+    font-size: 0.8em;
+    margin: 6px;
+    padding: 0 6px;
+    border-radius: 12px;
+}
+
+.report {
+    padding: 4px;
+    margin: 0 8px;
+    float: right;
+    background-color: lightgrey;
+    border: 1px solid darkgrey;
+    border-radius: 8px;
+}
+
+.arGraph {
+    width: 600px;
+    margin: 24px auto;
+    border: 2px blue solid;
+}
+
+.oneline {
+    max-width: 80px;
+    overflow: hidden;
+    white-space: nowrap;
+}

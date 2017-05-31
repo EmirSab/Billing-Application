@@ -1,0 +1,119 @@
+body{
+    background-color: white;
+}
+.loginform{
+     width: 30%;
+     background-color: #222222;
+     color: silver;
+}
+input[type=text], input[type=password]{
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid silver;
+    box-sizing: border-box;
+}
+.frmbuttons {
+    background-color: silver;
+    color: #222222;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+button:hover {
+    opacity: 0.8;
+}
+.logcontainer {
+    padding: 16px;
+}
+.topnav {
+  overflow: hidden;
+  background-color: #333;
+}
+.topnav a {
+  float: left;
+  display: block;
+  color: silver;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: silver;
+  color: black;
+}
+
+.topnav a.active {
+    background-color: #4CAF50;
+    color: silver;
+}
+/*
+css for report menu right corner
+*/
+.dropdown{
+    float: left;
+    margin-top: 7px;
+}
+
+/*
+css for dashboard region table and chart
+*/
+.regionDashTable{
+    width: 400px;
+    margin-top: 3%;
+}
+.regionChart{
+    width: 400px;
+    display: table;
+    float: right;
+    margin-right: 15%;
+    margin-top: 50px;
+}
+.css-serial {
+  counter-reset: serial-number; 
+}
+
+.css-serial td:first-child:before {
+  counter-increment: serial-number;  
+  content: counter(serial-number);  
+}
+caption{
+    text-align: center;
+    font-size: 20px;
+}
+#myChart{
+    width: 500px;
+    height: 300px;
+}
+.categorychart{
+    display: block; 
+    width: 700px; 
+    height: 500px; 
+    float: right;
+}
+#myChartCat{
+    height: 400px;
+    display: block;
+    width: 700px
+}
+.agentsChart{
+    display: block; 
+    width: 700px; 
+    height: 500px; 
+    float: right;    
+    margin-top: 10px;
+}
+#myAgentsChart{
+    height: 400px;
+    display: block;
+    width: 700px
+}
+/*dodana validacija*/
+input:invalid {
+    border: 1px solid red;
+}

@@ -1,0 +1,57 @@
+
+<input type="date" ng-model="requestData.startDate" required>
+<input type="date" ng-model="requestData.endDate" required>
+
+<button class="btn btn-primary" ng-click="save()" style="float: right;">SALES BY CATEGORY</button>
+
+<table class="table table-bordered" style="counter-reset: serial-number;" ng-show="showCategory">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Turnover</th>
+                <th>Precent</th>
+                <th>Info</th>
+            </tr>
+        </thead>
+        <tbody ng-repeat="item in salesByCategoryData.sales">
+            <tr>
+                <td>{{item.categoryName}}</td>
+                <td>{{item.categoryTotal | number: 2}} &euro;</td>
+                <td>{{item.categoryPercent | number: 2}} %</td>
+                <td><button class="btn btn-primary" data-toggle="modal" data-target="#myModal" ng-click="getProduct(item)">INFO</button></td>
+            </tr>
+        </tbody>
+        <td bgcolor="#00ace6">TOTAL:</td><td colspan="3" bgcolor="#00ace6">{{salesByCategoryData.grandTotal}} &euro;</td>
+</table>
+
+
+  <!--modal start -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" ng-show="showCategory">
+        <div class="modal-content">
+         <div class="modal-body">
+            <form role="form">
+<table class="table table-bordered" style="counter-reset: serial-number;" >
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Product Total</th>
+                <th>Product Precent</th>
+                <th>Total Precent</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="items in salesByCategoryData.productSales">
+                <td>{{items.productName}}</td>
+                <td>{{items.productTotal}}</td>
+                <td>{{items.productPercent}}</td>
+                <td>{{items.totalPercent}}</td>
+            </tr>
+        </tbody>
+</table>
+            </form>
+        </div>
+      </div>
+    </div>
+</div>
+<!--Modal end -->

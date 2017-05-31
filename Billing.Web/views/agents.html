@@ -1,0 +1,77 @@
+<modal-dialog show='modalShown'>
+    <div class="modal-body">
+        <form role="form" name="new_agent" ng-submit="submitform()">
+
+            <div class="form-group">
+                <label class="hidden">ID</label><input type="hidden" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label>Name</label><input name="name" placeholder="text" class="form-control" ng-model="agent.name" required type="name" />
+                <p ng-show="new_agent.name.$error.required">Name is required.</p>
+                <!--<button type="submit">SAVE</button>-->
+
+                <hr>
+            </div>
+            <div class="form-group">
+                <label>Username</label><input name="username" placeholder="text" class="form-control" ng-model="agent.username" required />
+                <p ng-show="new_agent.username.$error.required">Username is required.</p>
+                <!--<button type="submit">SAVE</button>-->
+                <div class="row">
+                        <div class="form-group col-md-10">
+                            <label>Add new Town</label>
+                            <input type="text" ng-model="selectedTown" placeholder="Enter town" uib-typeahead="town as town.name for town in getTowns($viewValue)" 
+                                                typeahead-loading="loadingLocations" typeahead-no-results="noResults"
+                            class="form-control">
+                            
+                        </div>
+                        <span class="btn btn btn-success" style="margin-top: 24px" ng-click="add(selectedTown)"><i class="fa fa-plus"></i></span>
+                        <!--<div class="form-group col-md-2"><button type="button" class="btn btn btn-success" ng-click="add(selectedTown)"><i class="fa fa-plus"></i></button></div>-->
+                        
+                        </div>
+                        <div class="form-group">
+                            <label>Currenty assigned towns:</label> <br>
+                            <div ng-repeat="town in agent.towns" class="col-md-3" data-toggle="tooltip" title="{{town.zip}} {{town.name}}">
+                                <div class="btn btn-default">{{ town.name }}&nbsp <span class="glyphicon glyphicon-remove" ng-click="remove(town)"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                <hr>
+                <input type="submit" class="btn btn-primary" ng-disabled="new_agent.name.$dirty && new_agent.name.$invalid ||
+  new_agent.username.$dirty && new_agent.username.$invalid" ng-click="save(item)">
+  
+
+             <!--<button ng-click="save()">SAVE</button>-->
+            </div>
+        </form>
+    </div>
+    <!---->
+</modal-dialog>
+<button ng-click="new()" class="btn btn-primary" style="margin-bottom:-50px;">NEW AGENT</button>
+<style>
+.table td:first-child:before {
+  counter-increment: serial-number;  /* Increment the serial number counter */
+  content: counter(serial-number);  /* Display the counter */
+}
+</style>
+  <table class="table table-bordered" style="counter-reset: serial-number;">
+      <caption>Agents Employed</caption>
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Username</th>
+                <th>EDIT</th>
+                <th>DELETE</th>
+            </tr>
+        </thead>
+        <tbody ng-repeat="agent in agents">
+            <tr>
+                <td></td>
+                <td>{{agent.name}}</td>
+                <td>{{agent.username}}</td>
+                <td><button ng-click="edit(agent)" class="btn btn-warning" param="{{agent.name}}"admin-view is-from-agent>EDIT</button></td>
+                <td admin-view><button ng-click="delete(agent)" class="btn btn-danger">DELETE</button></td>
+            </tr>
+        </tbody>
+    </table>

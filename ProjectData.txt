@@ -1,0 +1,18 @@
+Antonio		YW50b25pbzpiaWxsaW5n
+Marlon		bWFybG9uOmJpbGxpbmc=
+Meril		bWVyaWw6YmlsbGluZw==
+Julia		anVsaWE6YmlsbGluZw==
+Kevin		a2V2aW46YmlsbGluZw==
+Samantha	c2FtYW50aGE6YmlsbGluZw==
+John		am9objpiaWxsaW5n
+Paul		cGF1bDpiaWxsaW5n
+
+{
+"id": "2",
+"StartDate": "2016-01-01T00:00:00",
+"EndDate": "2016-12-31T00:00:00"
+}
+
+alpha je secret pod base64 ce biti YWxwaGE=
+666666 je AppID tj. ApiKey koji ste vi zadali takodjer i base64 je NjY2NjY2
+XNUxLJQqRvuwLj/jQblB3O71FrwVl3keCy2es30MwvQ= ovo je signature 

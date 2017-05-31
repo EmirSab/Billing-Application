@@ -1,0 +1,41 @@
+<input type="text" ng-model="invoiceNo" uib-typeahead="invItem.id as invItem.invoiceNo for invItem in invoices | filter:$viewValue | limitTo:8" class="form-control"/>
+<input type="submit" ng-click="search()"/>
+
+
+<table class="table table-float">
+   <thead><th>Customer Details for Invoice Number: {{Report.invoice.invoiceNo}}</th></thead>
+    <tr><td>Customer :</td><td>{{Report.invoice.customerName}}</td></tr>
+    <tr><td>Address :</td><td>{{Report.invoice.customerAddress}}</td></tr>
+    <tr><td>Town :</td><td>{{Report.invoice.town}}</td></tr>
+    <tr><td>Date :</td><td>{{Report.invoice.invoiceDate | date: shortDate}}</td></tr>
+
+</table>
+<hr style="color: blue">
+<table class="table table-float">
+    <thead><th>Product</th><th>Quantity</th><th>Unit</th><th>Price</th><th>SubTotal</th></thead>
+    <tr ng-repeat="item in Report.product">
+    <td>{{item.product}}</td>
+    <td>{{item.quantity}}</td>
+    <td>{{item.unit}}</td>
+    <td>{{item.price}}</td>
+    <td>{{item.subTotal}}</td>
+    </tr>
+</table>
+
+
+<table class="table table-float">
+   <thead><th>Order and Shipping Details</th></thead>
+    <tr><td>Sales Person :</td><td>{{Report.invoice.agent}}</td></tr>
+    <tr><td>Town :</td><td>{{Report.invoice.town}}</td></tr>
+    <tr><td>Order Date :</td><td>{{Report.invoice.orderDate | date: shortDate}}</td></tr>
+    <tr><td>Shipped Via :</td><td>{{Report.invoice.shippedVia}}</td></tr>
+    <tr><td>Shipping Date :</td><td>{{Report.invoice.shippedDate | date: shortDate}}</td></tr>
+    <tr><td>Invoice SubTotal :</td><td>{{Report.invoice.invoiceSubtotal | number:2}}</td></tr>
+    <tr><td>Vat Amount :</td><td>{{Report.invoice.vatAmount | number:2}}%</td></tr>
+    <tr><td>Shipping :</td><td>{{Report.invoice.shipping | number:2}}</td></tr>
+    <tr><td>Total :</td><td>{{Report.invoice.total | number:2}}</td></tr>
+
+
+
+
+</table>

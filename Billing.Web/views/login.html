@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Alpha Team Billing App</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- style -->
+    <link rel="stylesheet" href="styles/bootstrap.min.css" />
+    <link rel="stylesheet" href="styles/responsive.css" />
+    <link rel="stylesheet" href="styles/loginPage.css" />
+    <!-- scripts -->
+    <script src="library/jquery-3.2.1.min.js"></script>
+    <script src="library/bootstrap.min.js"></script>
+
+</head>
+<body>
+    <div class="container" style="margin-left: 8%;">
+        <div class="row top-margin">
+            <div class="col-sm-offset-4 col-sm-4">
+                <form role="form">
+                    <div class="form-group">
+                        <label for="username" style="color:white; font-weight:bold" >Username:</label>
+                        <input type="username" class="form-control" id="username" required ng-model="user.name">
+                    </div>
+                    <div class="form-group">
+                        <label for="pwd" style="color:white; font-weight:bold">Password:</label>
+                        <input type="password" class="form-control" id="pwd" required ng-model="user.pass">
+                    </div>
+                    <div class="checkbox">
+                        <label style="color:white; font-weight:bold"><input type="checkbox" ng-model="user.remember"> Remember me</label>
+                    </div>
+
+
+                </form>
+                <!--<form method="get" action="overview.html">-->
+                    <button type="submit" class="btn btn-primary form-control" ng-click="login()">Login</button>
+                <hr />
+                    
+            </div>
+        </div>
+    </div>
+<form>
+        Login as:<br>
+        <button ng-click="loginAs('marlon')">Marlon</button>
+         <button ng-click="loginAs('kevin')">Kevin</button>
+</form>
+</body>
+</html>
+<!--<form class="loginform">
+    <link rel="stylesheet" href="../styles/style.css">
+    <div class="logcontainer">
+        <label><strong>Username: </strong></label>
+        <input type="text" placeholder="Enter Username" name="uname" required ng-model="user.name"/>
+
+        <label><strong>Password: </strong></label>
+        <input type="password" placeholder="Enter Password" name="pass" required ng-model="user.pass"/>
+        <button type="submit"class="frmbuttons">LOGIN</button>
+        <button type="submit" class="frmbuttons" ng-click="login()">CANCEL</button>
+        <div><input type="checkbox" checked="checked" ng-model="user.remember"/> Remember me</div>
+    </div>
+</form>
+<form>
+        Login as:<br>
+        <button ng-click="loginAs('marlon')">Marlon</button>
+        <button ng-click="loginAs('julia')">Julia</button>
+        <button ng-click="loginAs('antonio')">Antonio</button>
+        <button ng-click="loginAs('meryl')">Meryl</button>
+        <button ng-click="loginAs('samantha')">Samantha</button>
+        <button ng-click="loginAs('john')">John</button>
+        <button ng-click="loginAs('paul')">Paul</button>
+        <button ng-click="loginAs('kevin')">Kevin</button>
+</form>-->

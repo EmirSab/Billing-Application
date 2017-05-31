@@ -1,0 +1,384 @@
+<button ng-click="new()" class="btn btn-primary" data-toggle="modal" data-target="#myModalNew" style="margin-bottom: 10px;">NEW INVOICE</button>
+<table class="table table-bordered" style="counter-reset: serial-number;">
+    <thead>
+        <tr>
+            <th>Invoice No</th>
+            <th>Date</th>
+            <th>Customer</th>
+            <th>Total</th>
+            <th>Status</th>
+            <th>Vat</th>
+            <th>Shipping</th>
+            <th>Agent</th>
+            <th>Shipper</th>
+            <th>EDIT</th>
+            <th>DELETE</th>
+            <th>INFO</th>
+        </tr>
+    </thead>
+    <tbody ng-repeat="item in invoices">
+        <tr>
+            <td>{{item.invoiceNo}}</td>
+            <td>{{item.date }}</td>
+            <td>{{item.customer}}</td>
+            <td>{{item.total | number: 2}}</td>
+            <td>{{item.status}}</td>
+            <td>{{item.vat}}</td>
+            <td>{{item.shipping}}</td>
+            <td>{{item.agent}}</td>
+            <td>{{item.shipper}}</td>
+            <td><button ng-click="edit(item)" class="btn btn-warning" data-toggle="modal" data-target="#myModalNew">EDIT</button></td>
+            <td><button ng-click="delete(item)" class="btn btn-danger">DELETE</button></td>
+            <td><button class="btn btn-primary" ng-click="info(item)" data-toggle="modal" data-target="#myModalInfo">INFO</button></td>
+        </tr>
+    </tbody>
+</table>
+
+<!--START OF MODAL-->
+<div class="modal fade" id="myModalNew" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+
+
+      <div class="modal-dialog" ng-show="shownInvoices"> 
+		 <div class="modal-content">
+			    <!-- Modal Header -->
+        		 <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                       <span aria-hidden="true">&times;</span>
+                       <span class="sr-only">Close</span>
+                </button>
+                    <h4 class="modal-title" id="myModalLabel">
+                        Creating invoice {{invoice.invoiceNo}}
+                    </h4>
+                </div>
+                <div class="clearfix"></div>
+        		<!-- Modal Body -->
+        		<div class="modal-body">
+        		  	<div class="row">
+						<!--<div class="form-group">
+						<label class="hidden">ID</label><input type="hidden" class="form-control" ng-model="invoice.id"
+						   ng-disabled="invoice.id"/>
+						</div>-->
+						<div class="col-md-4">
+							<div><b>Invoice No</b></div>
+							<div><input type="text" class="form-control" ng-model="invoice.invoiceNo"/></div>
+						</div> 
+						<div class="col-md-4">
+							<div><b>Date</b></div>
+							<div><input type="date" class="form-control" ng-model="invoice.date"/></div>
+						</div>
+						<div class="col-md-4">
+							<div>Shipped On</div>
+							<div><input type="date" class="form-control" ng-model="invoice.shippedOn"/></div>
+						</div>
+					</div><br>
+					<div class="row">
+						<div class="col-md-4">
+							<div><b>Customer</b></div>
+							<div><select ng-model="invoice.customerId" class="form-control"
+									 ng-options="customer.id as customer.name for customer in customers"></select></div>
+						</div>
+					
+						
+						<div class="col-md-4">
+							<div><b>Agent</b></div>
+							<div><select ng-model="invoice.agentId" class="form-control"
+										 ng-options="agent.id as agent.name for agent in agents"></select></div>
+						</div>
+						
+						<div class="col-md-4">
+							<div>Shipper</div>
+							<div><select ng-model="invoice.shipperId" class="form-control"
+									 ng-options="shipper.id as shipper.name for shipper in shippers"></select></div>
+						</div>
+					</div><br>
+					<div class="row">	
+						<div class="col-md-4">
+						<div><b>Vat</b></div>
+							<div><input type="number" class="form-control" ng-model="invoice.vat"/></div>
+						</div>
+						
+						
+						<div class="col-md-4">
+							<div><b>Shipping</b></div>
+							<div><input type="number" class="form-control" ng-model="invoice.shipping"/></div>
+						</div>  
+
+						<div class="col-md-4">
+							<div><b>Status</b></div>
+							<div><select ng-model="invoice.status"  class="form-control"
+									 ng-options="status for status in states"></select></div>
+						</div>
+					</div><br>
+					<hr>
+					<div class="row">
+						<div class="col-md-3 pull-right">
+							<div class="pull-left">Shipping:</div><div class="pull-right"><b>{{ invoice.shipping | number:2 }}</b></div>
+							<div style="clear:both"></div>
+							<div class="pull-left">Subtotal:</div><div class="pull-right"><b>{{ invoice.subTotal | number:2 }}</b></div>
+							<div style="clear:both"></div>
+							<div class="pull-left">VAT amount:</div><div class="pull-right"><b>{{ invoice.vatAmount | number:2 }}</b></div>
+							<div style="clear:both"></div>
+							<div class="pull-left">Invoice total:</div><div class="pull-right"><b>{{ invoice.total | number:2 }}</b></div>
+							</div>
+					</div> <br><hr>
+				<!--PART OF MODAL FOR PRODUCTS/ITEMS-->
+             	<div ng-show="invoice.id">  
+					<table class="table table-hover table-darkblue">
+						<thead>
+							<th>
+								Product
+							</th>
+							<th>
+								Quantity
+							</th>
+							<th>
+								Unit
+							</th>
+							<th>
+								Price
+							</th>
+							<th>
+								Subtotal
+							</th>
+							<th></th>
+							<th></th>
+						</thead>
+						<tbody>
+							<tr ng-repeat = "item in invoice.items">
+								<td class="col-md-3">
+									<input type="text" class = "form-control" ng-model="item.product" size="30">
+								</td>
+								<td class="col-md-2">
+									<input ng-model="item.quantity" size="5" class="form-control" type="text" />
+								</td>
+								<td class="col-md-1" style="vertical-align: inherit;">
+									{{ item.unit }}
+								</td>
+								<td class="col-md-2">
+									<input ng-model="item.price" class="form-control" type="text" />
+								</td>
+								<td class="col-md-1" style="vertical-align: inherit;">
+									<b>{{ item.subTotal | number:2 }}</b>
+								</td>
+								<td class="col-md-1">
+									<div class="pull-right"><button type="button" ng-click="saveItem(item)" class="btn btn-xs btn-success">+</button></div>
+								</td>
+								<td class="col-md-1">
+									<button type="button" ng-click="removeItem(item)" class="btn btn-xs btn-danger">-</button>
+								</td>
+							</tr>
+							<tr>
+								<td class="col-md-5">
+									<input type="text" ng-model="newItem.product" placeholder="Select Product" uib-typeahead="product as product.name for product in getProducts($viewValue)">
+								</td>
+								<td class="col-md-2">
+									<input ng-model="newItem.quantity" class = "form-control" size="5" type="text" />
+								</td>
+								<td class="col-md-1">
+									{{ newItem.unit }}
+								</td>
+								<td class="col-md-2">
+									<input ng-model="newItem.price" class="form-control" size="5" type="text" />
+								</td>
+								<td class="col-md-1">
+									<b>{{ newItem.subTotal | number:2 }}</b>
+								</td>
+								<td class="col-md-1">
+									<div class="pull-right"><button type="button" ng-click="saveItem(newItem)" class="btn btn-xs btn-success">+</button></div>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+        		</div>
+             		
+              </div>
+			    
+			    <div class="clearfix"></div>
+			    <!-- Modal Footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal"> Close </button>
+                    <button type="button" class="btn btn-primary" ng-click="save()" onclick="$('.modal').modal('hide')">Save</button>
+                </div>
+		</div>	  
+      </div>
+    
+    
+</div>
+<!--END OF MODAL-->
+
+
+
+
+<!-- INFO MODAL -->
+<div class="modal fade" id="myModalInfo" tabindex="-1" role="dialog" data-backdrop="static" aria-labelledby="myModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+            </div>
+            <!-- Modal Body -->
+
+            <div id="printable">
+                <div class="modal-body">
+
+                    <form role="form">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <div class="panel panel-info">
+                                        <div class="panel-heading" style="color:red; background-color:white;border-color: #bce8f1;">
+                                            <h4>Customer</h4>
+                                        </div>
+                                        <div class="panel-body">
+                                            <p>{{invoicesData.customerName}}</p>
+                                            <p>{{invoicesData.customerAddress}}</p>
+                                            <p>{{invoicesData.zipCode}} {{invoicesData.town}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-3" style="float:right">
+                                    <div class="panel panel-info">
+                                        <div class="panel-heading" style="color:red; background-color:white;border-color: #bce8f1;">
+                                            <h4>Invoice</h4>
+                                        </div>
+                                        <div class="panel-body">
+                                            <p><strong>{{invoicesData.invoiceNo}}</strong></p>
+                                            <p>{{invoicesData.invoiceDate | date:'dd-MM-yyyy'}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <table class="table table-striped table-bordered table-list">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center">Customer Id</th>
+                                        <th class="text-center">Sales Person</th>
+                                        <th class="text-center">Ordered</th>
+                                        <th class="text-center">Shipped</th>
+                                        <th class="text-center">Shipped Via</th>
+                                    </tr>
+                                </thead>
+                                <tr class="text-center">
+                                    <td>{{invoicesData.customerId}}</td>
+                                    <td>{{invoicesData.salesperson}}</td>
+                                    <td>{{invoicesData.orderDate | date:'dd.MM.yyyy'}}</td>
+                                    <td>{{invoicesData.shippedDate | date:'dd.MM.yyyy'}}</td>
+                                    <td>{{invoicesData.shippedVia}}</td>
+                                </tr>
+                            </table>
+                            <br>
+                            <table class="table table-striped table-bordered table-list">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center">Id</th>
+                                        <th class="text-center">Product</th>
+                                        <th class="text-center">Unit</th>
+                                        <th class="text-center">Quantity</th>
+                                        <th class="text-center">Price</th>
+                                        <th class="text-center">SubTotal</th>
+                                    </tr>
+                                </thead>
+                                <tr class="text-center" ng-repeat="item in invoicesData.products | filter:select | orderBy:sort">
+                                    <td>{{item.productId}}</td>
+                                    <td>{{item.productName}}</td>
+                                    <td>{{item.productUnit}}</td>
+                                    <td>{{item.quantity}}</td>
+                                    <td>{{item.price}}</td>
+                                    <td>{{item.subtotal}}</td>
+                                </tr>
+                            </table>
+                            <div class="row">
+                                <div class="col-xs-10 text-right">
+                                    <p>SubTotal:</p>
+                                </div>
+                                <div class="col-xs-2 text-left">
+                                    <p>{{invoicesData.invoiceSubtotal}}</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-10 text-right">
+                                    <p>Vat:</p>
+                                </div>
+                                <div class="col-xs-2 text-left">
+                                    <p>{{invoicesData.vatAmount}}</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-10 text-right">
+                                    <p>Shipping:</p>
+                                </div>
+                                <div class="col-xs-2 text-left">
+                                    <p>{{invoicesData.shipping}}</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-10 text-right">
+                                    <p><strong>TOTAL:</strong></p>
+                                </div>
+                                <div class="col-xs-2 text-left">
+                                    <p><strong>{{invoicesData.invoiceTotal | number: 2}}</strong></p>
+                                </div>
+                            </div>
+
+                            <div class="container-fluid">
+                                <section class="row">
+                                </section>
+                            </div>
+                    </form>
+                    </div>
+                </div>
+                <!-- Modal Footer -->
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-success btn-create" data-dismiss="myModalInfo" data-toggle="modal" data-target="#sendModal"
+                        type="submit">
+                            
+                     Send</button>
+                    <button type="button" class="btn btn-danger" ng-click="printDiv('printable');">
+                    Print
+                </button>
+                    <button type="button" class="btn btn-primary" ng-click="saveAsPdf(invoicesData.invoiceId)">
+                    Save
+                </button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">
+                     Close
+                </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END INFO MODAL -->
+
+    <!--START MODAL FOR SEND -->
+    <div class="modal fade custom" id="sendModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel">
+                        Send email
+                    </h4>
+                </div>
+                <!-- Modal Body  -->
+                <div class=modal-body>
+                    <div class="form-group col-xs-4">
+                        <label>Email</label>
+                        <input type="text" class="form-control" ng-model="mailData.mailTo" />
+                    </div>
+                </div>
+
+                <!-- Modal Footer -->
+                <div class="modal-footer">
+                    <button class="btn btn-success" ng-click="send(invoicesData.invoiceId)" data-dismiss="modal">
+                                    Send</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">
+                                    Close
+                        </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END MODAL SEND -->
+<snap ng-repeat="page in pages"><button ng-click="goto(page)">{{page}}</button></snap>

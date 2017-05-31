@@ -1,0 +1,4 @@
+<Playlist Version="1.0">
+  <Add Test="c:\git\billing\billing.tests\orderedtests\products.orderedtest" />
+  <Add Test="c:\git\billing\billing.tests\orderedtests\categories.orderedtest" />
+</Playlist>

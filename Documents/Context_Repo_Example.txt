@@ -1,0 +1,64 @@
+// mala promjena
+
+using(BillingContext context = new BillingContext())
+            {
+                context.Agents.Add(new Agent() { Name = "Mehmed Baždarevic" });
+                context.Agents.Add(new Agent() { Name = "Safet Sušic" });
+                context.SaveChanges();
+
+                foreach(var aga in context.Agents)
+                {
+                    Console.WriteLine($"{aga.Id}: {aga.Name}");
+                }
+
+                Console.WriteLine("----------*----------");
+
+                Agent oldAgent = context.Agents.FirstOrDefault(x => x.Name ==
+                "Mehmed Baždarevic");
+                Agent newAgent = new Agent() { Id = oldAgent.Id, Name = "Edin Džeko" };
+                context.Entry(oldAgent).CurrentValues.SetValues(newAgent);
+                context.SaveChanges();
+
+                int maxId = context.Agents.Max(x => x.Id);
+                Agent agent = context.Agents.Find(maxId);
+                context.Agents.Remove(agent);
+
+                foreach (var aga in context.Agents)
+                {
+                    Console.WriteLine($"{aga.Id}: {aga.Name}");
+                }
+
+                Console.ReadKey();
+            }
+
+
+==================================================================
+
+IBillingRepository<Agent> agents = new BillingRepository<Agent>(new BillingContext());
+
+            agents.Insert(new Agent() { Name = "Mehmed Baždarevic" });
+            agents.Insert(new Agent() { Name = "Safet Sušic" });
+            agents.Commit();
+
+            foreach (var aga in agents.Get())
+            {
+                Console.WriteLine($"{aga.Id}: {aga.Name}");
+            }
+
+            Console.WriteLine("----------*----------");
+
+            Agent agent = agents.Get().FirstOrDefault(x => x.Name == "Mehmed Baždarevic");
+            agent.Name = "Edin Džeko";
+            agents.Update(agent, agent.Id);
+            agents.Commit();
+
+            int maxId = agents.Get().Max(x => x.Id);
+            agents.Delete(maxId);
+            agents.Commit();
+
+            foreach (var aga in agents.Get())
+            {
+                Console.WriteLine($"{aga.Id}: {aga.Name}");
+            }
+
+            Console.ReadKey();

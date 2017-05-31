@@ -1,0 +1,71 @@
+<input type="date" ng-model="requestData.startDate" required>
+<input type="date" ng-model="requestData.endDate" required>
+
+<button class="btn btn-primary" ng-click="save()" style="float: right;">SALES BY REGION</button>
+
+<table class="table table-bordered" style="counter-reset: serial-number;" ng-show="showRegion" ng-repeat="item in salesByRegionData.sales">
+    <caption>Region: {{item.regionName}}</caption>
+        <thead>
+            <tr>
+                <th>Agents</th>
+                <th>Agent Total</th>
+                <th>Region Precent</th>
+                <th>Total Precent</th>
+                <th>Info</th>
+            </tr>
+        </thead>
+        <tbody ng-repeat="items in item.agents">
+            <tr>
+                <td>{{items.agentName}}</td>
+                <td>{{items.agentTotal}}</td>
+                <td>{{items.regionPercent}}</td>
+                <td>{{items.totalPercent}}</td>
+                <td><button class="btn btn-primary" data-toggle="modal" data-target="#myModal" ng-click="getAgents(items)">INFO</button></td>
+            </tr>
+        </tbody>
+        <tbody>
+            <tr bgcolor="#00ace6">
+                <td>{{item.regionName}}'s Total</td>
+                <td colspan="2">{{item.regionTotal}}</td>
+                <td colspan="2">{{item.regionPercent}}</td>
+            </tr>
+        </tbody>
+</table>
+<!--<label>{{currentAgentName}}</label>
+<label>{{isidtrue}}</label>-->
+
+  <!--modal start -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
+    <div class="modal-dialog" ng-show="showRegion">
+        <div class="modal-content">
+         <div class="modal-body">
+            <form role="form">
+<table class="table table-bordered" style="counter-reset: serial-number;">
+        <thead>
+            <tr>
+                <th>Agent</th>
+                <th>Agent Total</th>
+                <th>Precent of Agent</th>
+                <th>Precent Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="items in salesByAgentData.sales">
+                <td>{{items.regionName}}</td>
+                <td>{{items.regionTotal}}</td>
+                <td>{{items.regionPercent}}</td>
+                <td>{{items.totalPercent}}</td>
+            </tr>
+        </tbody>
+        <!--<tbody ng-repeat="item in salesByAgentData">
+            <tr>
+                <td>Agent total{{item.agentTotal}}</td>
+            </tr>
+        </tbody>-->
+</table>
+            </form>
+        </div>
+      </div>
+    </div>
+</div>
+<!--Modal end -->

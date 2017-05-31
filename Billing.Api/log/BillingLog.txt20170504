@@ -1,0 +1,5 @@
+2017-05-04 11:11:08,594 | ERROR | An error occurred while updating the entries. See the inner exception for details.: http://localhost:59959/api/categories/11
+2017-05-04 11:11:12,700 | ERROR | An error occurred while updating the entries. See the inner exception for details.: http://localhost:59959/api/categories/10
+2017-05-04 11:11:13,249 | ERROR | An error occurred while updating the entries. See the inner exception for details.: http://localhost:59959/api/categories/9
+2017-05-04 11:11:23,233 | ERROR | An error occurred while updating the entries. See the inner exception for details.: http://localhost:59959/api/agents/8
+2017-05-04 11:17:53,455 | ERROR | An error occurred while updating the entries. See the inner exception for details.: http://localhost:59959/api/categories/8

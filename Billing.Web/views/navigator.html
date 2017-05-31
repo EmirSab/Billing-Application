@@ -1,0 +1,11 @@
+<div>Filter: <input type="search" ng-model="$parent.selector"> |
+     Sort by: <select ng-model="$parent.sort">
+        <option value="id">Id</option>
+        <option value="+name">Name asc</option>
+        <option value="-name">Name dsc</option>
+        <option value="town">Town</option>
+    </select>
+    | <button ng-click="$parent.new()" class="btn btn-primary">NEW</button>
+    <hr>
+</div>
+<!--<button ng-click="new()" class="btn btn-primary">NEW CUSTOMER</button>-->

@@ -1,0 +1,22 @@
+<input type="date" ng-model="requestData.startDate" required>
+<input type="date" ng-model="requestData.endDate" required>
+
+<button class="btn btn-primary" ng-click="save()" style="float: right;">SALES BY CUSTOMER</button>
+
+<table class="table table-bordered" style="counter-reset: serial-number;" ng-show="showCustomer">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Turnover</th>
+                <th>Precent</th>
+            </tr>
+        </thead>
+        <tbody ng-repeat="item in salesByCustomerData.sales">
+            <tr>
+                <td>{{item.customerName}}</td>
+                <td>{{item.customerTurnover | number: 2}} &euro;</td>
+                <td>{{item.customerPercent}} %</button></td>
+            </tr>
+        </tbody>
+        <td bgcolor="#00ace6">GRAND TOTAL:</td><td bgcolor="#00ace6" colspan="2">{{salesByCustomerData.grandTotal | number: 2}} &euro;</td>
+</table>

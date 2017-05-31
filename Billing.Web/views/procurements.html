@@ -1,0 +1,83 @@
+<div style="border:solid 1px blue" ng-show="showProcurements">
+    <div>Id: <b> {{ procurement.id }}</b></div>
+    <div>Date:<input type="text" ng-model="procurement.date"></div>
+    <div>Document:<input type="text" ng-model="procurement.document"></div>
+    <div>Price:<input type="text" ng-model="procurement.price"></div>
+    <div>Product:
+        <select ng-model="procurement.productId" ng-options="product.id as product.name for product in products">
+        </select>
+    </div>
+    <div>Supplier:
+        <select ng-model="procurement.supplierId" ng-options="supplier.id as supplier.name for supplier in suppliers">
+        </select>
+    </div>   
+
+    <div> <button ng-click="save()">SAVE</button></div>
+</div>
+<button ng-click="new()" class="btn btn-primary" style="margin-bottom: 10px;">NEW PROCUREMENT</button>
+<style>
+.table td:first-child:before {
+  counter-increment: serial-number;  /* Increment the serial number counter */
+  content: counter(serial-number);  /* Display the counter */
+}
+</style>
+<table class="table table-bordered" style="counter-reset: serial-number;">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Date</th>
+                <th>Document</th>
+                <th>Price</th>
+                <th>Supplier</th>
+                <th>Product</th>
+                <th>Quantity</th>
+                <th>Total</th>
+                <th>EDIT</th>
+                <th>DELETE</th>
+            </tr>
+        </thead>
+        <tbody ng-repeat="procurement in procurements">
+            <tr>
+                <td></td>
+                <td>{{ procurement.date }}</td>
+                <td>{{procurement.document }}</td>
+                <td>{{procurement.price }}</td>
+                <td>{{procurement.supplier}}</td>
+                <td>{{procurement.product}}</td>
+                <td>{{procurement.quantity}}</td>
+                <td>{{procurement.total}}</td>
+                <td><button ng-click="getProcurement(procurement)" class="btn btn-warning">EDIT</button></td>
+                <td><button ng-click="deleteProcurement(procurement)" class="btn btn-danger">DELETE</button></td>
+            </tr>
+        </tbody>
+    </table>
+    <snap ng-repeat="page in pages"><button ng-click="goto(page)">{{page}}</button></snap>
+
+<!--<div class="row">
+    <div class="col-md-1"><b>ID</b></div>
+    <div class="col-md-1"><b>Date</b></div>
+    <div class="col-md-1"><b>Document</b></div>
+    <div class="col-md-1"><b>Price</b></div>
+    <div class="col-md-1"><b>Sup_name</b></div>
+    <div class="col-md-1"><b>Sup_id</b></div>
+    <div class="col-md-1"><b>Pro_name</b></div>
+    <div class="col-md-1"><b>Pro_id</b></div>
+    <div class="col-md-1"><b>Quantity</b></div>
+    <div class="col-md-1"><b>Total</b></div>
+    <a href="" ng-click="new()">CREATE NEW</a>
+</div>
+<br>
+<div class="row" ng-repeat="procurement in procurements">
+    <div class="col-md-1">{{procurement.id }}</div>
+    <div class="col-md-1">{{procurement.date }}</div>
+    <div class="col-md-1">{{procurement.document }}</div>
+    <div class="col-md-1">{{procurement.price }}</div>
+    <div class="col-md-1">{{procurement.supplier }}</div>
+    <div class="col-md-1">{{procurement.supplierId }}</div>
+    <div class="col-md-1">{{procurement.product }}</div>
+    <div class="col-md-1">{{procurement.productId }}</div>
+    <div class="col-md-1">{{procurement.quantity }}</div>
+    <div class="col-md-1">{{procurement.total }}</div>
+    <a href="" ng-click="getProcurement(procurement)">EDIT</a> |
+    <a href="" ng-click="deleteProcurement(procurement)">DELETE</a> |
+</div>-->

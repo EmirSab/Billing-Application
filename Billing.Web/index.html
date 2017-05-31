@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html ng-app="Billing">
+
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>Alpha Billing Page</title>
+      <link href="https://fonts.googleapis.com/css?family=Josefin+Slab" rel="stylesheet">
+      <link href="styles/dist/css/bootstrap.min.css" rel="stylesheet">
+      <link href="dashboard.css" rel="stylesheet">
+      <link rel="styles/bootstrap.css"/>
+      <link rel="stylesheet" href="styles/modal.css">
+      <link rel="stylesheet" href="styles/style.css">
+      
+      <script src="library/angular.min.js"></script>
+      <script src="library/angular-route.min.js"></script>
+      <script src="library/angular-local-storage.min.js"></script>
+      <script src="scripts/app.js"></script>
+	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+      <script src="library/bootstrap.min.js"></script>
+      <script src="library/toaster.min.js"></script>
+      <script src="library/chart.min.js"></script>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" class="rel">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap-tpls.js"></script>
+      <script src="scripts/FileServer.min.js"></script>
+
+      
+      <!-- reports-->
+      <script src="scripts/controllers/AgentsRegionsCtrl.js"></script>
+      <script src="scripts/controllers/SalesByCustomerCtrl.js"></script>
+      <script src="scripts/controllers/SalesByRegionCtrl.js"></script>
+      <script src="scripts/controllers/ReportControllers/SalesByCategoryCtrl.js"></script>
+      <script src="scripts/controllers/ReportControllers/SalesByCustomerCategoryCtrl.js"></script>
+      <script src="scripts/controllers/ReportControllers/DashboardCtrl.js"></script>
+      <script src="scripts/controllers/ReportControllers/StockLevelCtrl.js"></script>
+      <script src="scripts/controllers/ReportControllers/InvoicesReviewCtrl.js"></script>
+      <!--end of reports -->
+
+      <!--sweet alert link -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+      <script src="styles/sweetalert.min.js"></script>
+      <link rel="stylesheet" type="text/css" href="styles/sweetalert.css">
+      <!-- end of the sweet alert links -->
+
+      <!-- Admin View Directive-->
+      <script src="scripts/directives/IsFromAgent.js"></script>
+      <script src="scripts/directives/AdminDirective.js"></script>
+      <!-- end of Admin View Directive-->
+      <script src="scripts/controllers/AgentsCtrl.js"></script>
+      <script src="scripts/controllers/CustomersCtrl.js"></script>
+      <script src="scripts/controllers/CategoriesCtrl.js"></script>
+      <script src="scripts/controllers/SuppliersCtrl.js"></script>
+      <script src="scripts/controllers/ShippersCtrl.js"></script>
+      <script src="scripts/controllers/ItemsCtrl.js"></script>
+      <script src="scripts/controllers/InvoicesCtrl.js"></script>
+      <script src="scripts/controllers/ProductsCtrl.js"></script>
+      <script src="scripts/controllers/ProcurementsCtrl.js"></script>
+      <script src="scripts/controllers/StockCtrl.js"></script>
+      <script src="scripts/controllers/LoginCtrl.js"></script>
+      <script src="scripts/services/DataService.js"></script>
+      <script src="scripts/services/LoginService.js"></script>
+      <script src="scripts/directives/PartnerDirective.js"></script>
+      <script src="scripts/directives/ModalDirective.js"></script>
+    
+  </head>
+  <body>
+    <nav class="navbar navbar-inverse navbar-fixed-top" ng-hide="showDashboard">
+      <div class="container-fluid">
+        <div class="navbar-header">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>       
+          <a class="navbar-brand" href="#">Alpha Team Billing App</a>
+        </div>
+		  <!-- start of the navbar menu top right corner, css is in style.css -->
+			<ul class="nav navbar-nav navbar-right" >
+				<div class="dropdown">
+				   <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Monthly reports<span class="caret"></span></button>
+					 <ul class="dropdown-menu">
+						<li><a href="#AgentsByRegion">Agents By Region Report</a></li>
+						<li><a href="#SalesByCustomer">Sales By Customer Report</a></li>
+						<li><a href="#SalesByRegion">Sales By Region</a></li>
+						<li><a href="#SalesByCategory">Sales By Category</a></li>
+						<li><a href="#CustomersByCategory">Sales By Customer / Category</a></li>
+            <li><a href="#StockLevel">Stock Level</a></li>
+            <li><a href="#InvoicesReview">Invoices Review</a></li>
+					</ul>
+				</div>
+						<li><a href="#Dashboard">Dashboard</a></li>
+						<li><a href="#">Settings</a></li>
+						<li><a href="#" ng-show="currentUser">{{ currentUser }}</a></li>
+						<li><a href="#/logout">Logout</a></li>
+			</ul>
+		 <!-- end of the navbar menu top right corner -->
+        </div>
+    </nav>
+    <div class="container-fluid" ng-hide="showDashboard">
+      <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+          <ul class="nav nav-sidebar">
+            <li><a href="#">Overview <span class="sr-only">(current)</span></a></li>
+            <li><a href="#agents">Agents</a></li>
+            <li><a href="#/categories">Catgories</a></li>
+            <li><a href="#/customers">Customers</a></li>
+            <li><a href="#/invoices">Invoices</a></li>
+            <li><a href="#/products">Products</a></li>
+            <li><a href="#/procurements">Procurements</a></li>
+            <li><a href="#/shippers">Shippers</a></li>
+            <li><a href="#/stock">Stocks</a></li>
+            <li><a href="#/suppliers">Suppliers</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="container" style="margin-left: 10%; margin-top: 2%;"><div ng-view autoscroll="true"></div></div>  
+       
+  </body>
+</html>

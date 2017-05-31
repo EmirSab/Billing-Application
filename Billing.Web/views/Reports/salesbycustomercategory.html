@@ -1,0 +1,24 @@
+<input type="date" ng-model="requestData.startDate" required>
+<input type="date" ng-model="requestData.endDate" required>
+
+<button class="btn btn-primary" ng-click="save()" style="float: right;">SALES BY CUSTOMER / CATEGORY</button>
+
+<table class="table table-bordered" style="counter-reset: serial-number;" ng-show="showCustomerCategory">
+        <thead>
+            <tr>
+                <th>Customer</th>
+                <th bgcolor="#00ace6">Turnover</th>
+                <th ng-repeat="categorie in salesByCustomerCategorydata.catRevenue">{{categorie.categoryName}}</th>
+            </tr>
+        </thead>
+        <tbody ng-repeat="customer in salesByCustomerCategorydata.cusRevenue">
+            <tr>
+                <td>{{customer.customerName}}</td>
+                <td bgcolor="#00ace6">{{customer.customerTurnover | number: 2}} &euro;</td>
+                <td ng-repeat="item in customer.categorySales track by $index">{{item | number: 2}} </td>
+            </tr>
+        </tbody>
+        <td bgcolor="#00ace6">TOTAL:</td><td bgcolor="#00ace6">{{salesByCustomerCategorydata.grandTotal}} &euro;</td>
+        <td ng-repeat="items in salesByCustomerCategorydata.catRevenue" bgcolor="#00ace6">{{items.categoryTotal}}</td>
+</table>
+

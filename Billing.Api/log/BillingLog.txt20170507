@@ -1,0 +1,23 @@
+2017-05-07 20:07:16,910 | ERROR | Nullable object must have a value.: http://localhost:59959/api/InvoicesReview
+2017-05-07 20:07:39,662 | ERROR | Nullable object must have a value.: http://localhost:59959/api/InvoicesReview
+2017-05-07 20:07:46,154 | ERROR | Object reference not set to an instance of an object.: http://localhost:59959/api/InvoicesReview
+2017-05-07 20:08:02,146 | ERROR | Nullable object must have a value.: http://localhost:59959/api/InvoicesReview
+2017-05-07 20:21:02,271 | ERROR | Object reference not set to an instance of an object.: http://localhost:59959/api/InvoicesReview
+2017-05-07 20:21:23,351 | ERROR | Nullable object must have a value.: http://localhost:59959/api/InvoicesReview
+2017-05-07 20:21:33,667 | ERROR | Nullable object must have a value.: http://localhost:59959/api/InvoicesReview
+2017-05-07 20:21:45,669 | ERROR | Nullable object must have a value.: http://localhost:59959/api/InvoicesReview
+2017-05-07 20:22:34,320 | ERROR | Nullable object must have a value.: http://localhost:59959/api/invoicesreview
+2017-05-07 20:23:13,640 | ERROR | Nullable object must have a value.: http://localhost:59959/api/invoicesreview
+2017-05-07 20:39:54,691 | ERROR | Nullable object must have a value.: http://localhost:59959/api/invoicesreview
+2017-05-07 20:41:03,353 | ERROR | Object reference not set to an instance of an object.: http://localhost:59959/api/invoicesreview/3
+2017-05-07 20:41:07,436 | ERROR | Object reference not set to an instance of an object.: http://localhost:59959/api/invoicesreview/3
+2017-05-07 20:41:12,354 | ERROR | Object reference not set to an instance of an object.: http://localhost:59959/api/invoicesreview
+2017-05-07 20:41:15,472 | ERROR | Object reference not set to an instance of an object.: http://localhost:59959/api/invoicesreview
+2017-05-07 20:41:51,924 | ERROR | Object reference not set to an instance of an object.: http://localhost:59959/api/InvoicesReview
+2017-05-07 20:42:04,912 | ERROR | Nullable object must have a value.: http://localhost:59959/api/InvoicesReview
+2017-05-07 20:42:18,428 | ERROR | Object reference not set to an instance of an object.: http://localhost:59959/api/InvoicesReview
+2017-05-07 20:43:01,329 | ERROR | Nullable object must have a value.: http://localhost:59959/api/InvoicesReview
+2017-05-07 21:26:07,844 | ERROR | Nullable object must have a value.: http://localhost:59959/api/InvoicesReview
+2017-05-07 21:33:27,576 | ERROR | Nullable object must have a value.: http://localhost:59959/api/InvoicesReview
+2017-05-07 21:38:44,457 | ERROR | The model backing the 'BillingContext' context has changed since the database was created. Consider using Code First Migrations to update the database (http://go.microsoft.com/fwlink/?LinkId=238269).: http://localhost:59959/api/InvoicesReview
+2017-05-07 21:46:06,486 | ERROR | Nullable object must have a value.: http://localhost:59959/api/InvoicesReview
